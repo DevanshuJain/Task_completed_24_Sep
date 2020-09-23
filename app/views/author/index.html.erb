@@ -1,0 +1,29 @@
+<br/><%= link_to 'Add Author', new_author_path, :class => "btn btn-info" %> 
+
+<h1>Listing Author</h1>
+ 
+<table class="table">
+  <tr>
+    <th>Author Id</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Date of birth</th>
+  </tr>
+ 
+  <% @authors.each do |author| %>
+    <tr>
+      <td><%= author.id %></td>
+      <td><%= author.first_name %></td>
+      <td><%= author.Last_name %></td>
+      <td><%= author.date_of_birth %></td>
+      
+      <td><%= link_to 'Books', book_index_path(author), :class => "btn btn-info" %></td>
+      <td><%= link_to 'Add Book', new_author_book_path(author), :class => "btn btn-info" %></td>
+      <td><%= link_to 'Edit', edit_author_path(author), :class => "btn btn-info" %></td>
+      <td><%= link_to 'Destroy', author_path(author),
+              method: :delete,
+              data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,24 @@
+<h1>add edit article</h1>
+
+<%=form_for @author, url: {action: "update"} do |p| %>
+    
+    <p>
+      <%= p.label :first_name %><br>
+      <%= p.text_field :first_name %>
+    </p>
+   
+    <p>
+      <%= p.label :Last_name %><br>
+      <%= p.text_area :Last_name %>
+    </p>
+
+    <p>
+        <%= p.label :date_of_birth %><br>
+        <%= p.text_area :date_of_birth %>
+    </p>
+
+    <p>
+        <%= p.submit %>
+    </p>
+    
+  <% end %>
