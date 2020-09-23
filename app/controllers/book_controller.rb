@@ -15,30 +15,24 @@ class BookController < ApplicationController
 
   def update
     @author = Author.find_by_id(params["author_id"])
-    @book = Book.update(author_id: params["author_id"], book_title: params[:book][:book_title])
-    redirect_to author_index_path
-
-    # @book = @author.books.find_by_id(params[:id])
-    # @update_book = @book.update(book_params)
-    # if @update_book.save
-    #   redirect_to author_index_path
-    # else
-    #   render 'new'
-    # end
+    @book = @author.books.find_by_id(params[:id])
+    @update_book = @book.update(book_params)
+    if @update_book.save
+      redirect_to author_index_path
+    else
+      render 'new'
+    end
   end
 
   def create
-    @author = Author.find_by_id(params["author_id"])
-    @book = Book.create(author_id: params["author_id"], book_title: params[:book][:book_title])
-    redirect_to author_index_path
-
-     # @book = @author.books.find_by_id(params[:id])
-    # @update_book = @book.new(book_params)
-    # if @update_book.save
-    #   redirect_to author_index_path
-    # else
-    #   render 'new'
-    # end
+    @author = Author.find_by_id(params["author_id"])    
+     @book = @author.books.find_by_id(params[:id])
+    @update_book = @book.new(book_params)
+    if @update_book.save
+      redirect_to author_index_path
+    else
+      render 'new'
+    end
   end
 
   def destroy
